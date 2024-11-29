@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ws_1 = require("ws");
 const rooms = new Map();
 const userNames = new Map(); // Map to track usernames
-const wss = new ws_1.WebSocketServer({ port: 8080 });
+const port = process.env.PORT || 4000;
+const wss = new ws_1.WebSocketServer({ port });
 wss.on("connection", (socket) => {
     console.log("New client connected");
     socket.on("message", (data) => {
