@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom"
 import { ComingMsg } from "./comingMsg";
 import { SentMsg } from "./sentMsg";
 
@@ -7,6 +8,7 @@ export const Room: React.FC = () => {
   const [newMessage, setNewMessage] = useState<string>(""); 
   const socket = useRef<WebSocket | null>(null); 
   const chatEndRef = useRef<HTMLDivElement | null>(null); 
+  const navigate = useNavigate();
 
   const username = localStorage.getItem("username") || "Anonymous";
   const roomName = localStorage.getItem("roomName") || "Room1";
@@ -115,7 +117,10 @@ export const Room: React.FC = () => {
             </div>
 
             <div className="flex items-center mr-2">
-              <button className="text-black bg-sky-50 text-md font-medium rounded-full py-2 px-6">
+              <button onClick={() => {
+                  navigate('/');
+              }}
+                className="text-black bg-sky-50 text-md font-medium rounded-full py-2 px-6">
                 Exit
               </button>
             </div>
