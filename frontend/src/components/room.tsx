@@ -143,6 +143,10 @@ export const Room: React.FC = () => {
         
         <div className="sticky bottom-0 z-10 bg-black p-2 flex">
           <input
+            onKeyDown={(e)=>{
+              if(e.key == "Enter"){
+              sendMessage();
+            }}}
             className="border-2 border-sky-50 bg-black p-1 w-[80dvw] rounded-lg text-sky-50"
             placeholder="Write the message"
             value={newMessage}
